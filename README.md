@@ -1,2 +1,2 @@
 # flutter-test
-A flutter demonstrative app
+A demonstrative app developed to practice and learn Dart, helped by Flutter.
