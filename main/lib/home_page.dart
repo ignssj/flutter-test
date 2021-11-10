@@ -17,7 +17,7 @@ class HomePageState extends State<HomePage> {
         title: Text('Theme Modifier',
             style: TextStyle(
               color:
-                  AppController.instance.darkFont ? Colors.white : Colors.black,
+                  AppController.instance.darkFont ? Colors.black : Colors.white,
               fontSize: 25,
             )),
       ),
@@ -29,8 +29,17 @@ class HomePageState extends State<HomePage> {
           });
         },
       ),
-      body: Center(
-        child: CustomSwitch(),
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Contador $count"),
+            CustomSwitch(),
+          ],
+        ),
       ),
     );
   }
