@@ -16,7 +16,10 @@ class HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Theme Modifier',
             style: TextStyle(
-                color: Colors.black, fontSize: 25, debugLabel: 'hey')),
+              color:
+                  AppController.instance.darkFont ? Colors.white : Colors.black,
+              fontSize: 25,
+            )),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
@@ -27,12 +30,20 @@ class HomePageState extends State<HomePage> {
         },
       ),
       body: Center(
-        child: Switch(
-            value: AppController.instance.isDark,
-            onChanged: (value) {
-              AppController.instance.changeTheme();
-            }),
+        child: CustomSwitch(),
       ),
     );
+  }
+}
+
+class CustomSwitch extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Switch(
+        value: AppController.instance.isDark,
+        onChanged: (value) {
+          AppController.instance.changeTheme();
+          AppController.instance.changeCFont();
+        });
   }
 }
