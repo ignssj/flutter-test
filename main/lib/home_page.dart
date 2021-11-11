@@ -13,6 +13,27 @@ class HomePageState extends State<HomePage> {
   int count = 0;
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: Column(
+          children: [
+            UserAccountsDrawerHeader(
+                currentAccountPicture: ClipRRect(
+                  borderRadius: BorderRadius.circular(70),
+                  child: Image.network(
+                      'https://uploads.spiritfanfiction.com/fanfics/historias/202105/luz-da-minha-escuridao-imagine-obanai-iguro-22348778-220520212148.jpg'),
+                ),
+                accountName: Text('Ignacio'),
+                accountEmail: Text('wnk@gmail.com')),
+            ListTile(
+              title: Text('Logout'),
+              leading: Icon(Icons.home),
+              onTap: () {
+                Navigator.of(context).pushReplacementNamed('/');
+              },
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: Text('Main Menu',
             style: TextStyle(
@@ -28,6 +49,7 @@ class HomePageState extends State<HomePage> {
             width: 40,
           ),
           FloatingActionButton(
+            heroTag: null,
             child: Icon(Icons.restart_alt_rounded),
             onPressed: () {
               setState(() {

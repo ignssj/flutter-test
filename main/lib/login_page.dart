@@ -12,83 +12,88 @@ class _LoginPageState extends State<LoginPage> {
   String pswd = '';
 
   Widget _body() {
-    return Container(
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset('assets/images/logo.png'),
-              Container(
-                height: 25,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  autofocus: true,
-                  onChanged: (text) {
-                    email = text;
-                  },
-                  keyboardType: TextInputType.emailAddress,
-                  decoration: InputDecoration(
-                      fillColor: Colors.white,
-                      labelText: 'E-mail',
-                      border: OutlineInputBorder()),
+    return ListView(
+      children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('assets/images/logo.png'),
+                Container(
+                  height: 25,
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  onChanged: (text) {
-                    pswd = text;
-                  },
-                  obscureText: true,
-                  decoration: InputDecoration(
-                      labelText: 'Password', border: OutlineInputBorder()),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    autofocus: true,
+                    onChanged: (text) {
+                      email = text;
+                    },
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                        fillColor: Colors.white,
+                        labelText: 'E-mail',
+                        border: OutlineInputBorder()),
+                  ),
                 ),
-              ),
-              Container(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        print('$email');
-                        if (email == 'wnk' && pswd == '123') {
-                          Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (context) => HomePage()),
-                          );
-                        } else {
-                          print("Failed...");
-                        }
-                      },
-                      child: Text("Login"),
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.grey[350], onPrimary: Colors.black54),
-                    ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: TextField(
+                    onChanged: (text) {
+                      pswd = text;
+                    },
+                    obscureText: true,
+                    decoration: InputDecoration(
+                        labelText: 'Password', border: OutlineInputBorder()),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text("Exit"),
-                      style: ElevatedButton.styleFrom(
-                          primary: Colors.grey[350], onPrimary: Colors.black54),
+                ),
+                Container(
+                  height: 30,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          print('$email');
+                          if (email == 'wnk' && pswd == '123') {
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                  builder: (context) => HomePage()),
+                            );
+                          } else {
+                            print("Failed...");
+                          }
+                        },
+                        child: Text("Login"),
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.grey[350],
+                            onPrimary: Colors.black54),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Text("Exit"),
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.grey[350],
+                            onPrimary: Colors.black54),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 
