@@ -19,8 +19,7 @@ class HomePageState extends State<HomePage> {
             UserAccountsDrawerHeader(
                 currentAccountPicture: ClipRRect(
                   borderRadius: BorderRadius.circular(70),
-                  child: Image.network(
-                      'https://uploads.spiritfanfiction.com/fanfics/historias/202105/luz-da-minha-escuridao-imagine-obanai-iguro-22348778-220520212148.jpg'),
+                  child: Image.asset('assets/images/pfl.jpg'),
                 ),
                 accountName: Text('Ignacio'),
                 accountEmail: Text('wnk@gmail.com')),
