@@ -14,29 +14,48 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Theme Modifier',
+        title: Text('Main Menu',
             style: TextStyle(
               color:
                   AppController.instance.darkFont ? Colors.black : Colors.white,
               fontSize: 25,
             )),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
-        onPressed: () {
-          setState(() {
-            count++;
-          });
-        },
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SizedBox(
+            width: 40,
+          ),
+          FloatingActionButton(
+            child: Icon(Icons.restart_alt_rounded),
+            onPressed: () {
+              setState(() {
+                count = 0;
+              });
+            },
+          ),
+          FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () {
+              setState(() {
+                count++;
+              });
+            },
+          ),
+          SizedBox(
+            width: 0,
+          ),
+        ],
       ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text("Contador $count"),
+            Text("Counter: $count"),
             CustomSwitch(),
           ],
         ),
@@ -49,10 +68,11 @@ class CustomSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Switch(
-        value: AppController.instance.isDark,
-        onChanged: (value) {
-          AppController.instance.changeTheme();
-          AppController.instance.changeCFont();
-        });
+      value: AppController.instance.isDark,
+      onChanged: (value) {
+        AppController.instance.changeTheme();
+        AppController.instance.changeCFont();
+      },
+    );
   }
 }

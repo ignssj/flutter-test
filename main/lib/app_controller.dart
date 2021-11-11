@@ -5,6 +5,7 @@ class AppController extends ChangeNotifier {
 
   bool isDark = false;
   bool darkFont = true;
+
   changeTheme() {
     isDark = !isDark;
     notifyListeners();

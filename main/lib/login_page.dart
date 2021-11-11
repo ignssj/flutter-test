@@ -1,35 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:main/home_page.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
-
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
   @override
-  Widget build(BuildContext context) {
-    String email = '';
-    String pswd = '';
-    return Material(
+  String email = '';
+  String pswd = '';
+
+  Widget _body() {
+    return Container(
       child: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Image.asset('assets/images/logo.png'),
+              Container(
+                height: 25,
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
+                  autofocus: true,
                   onChanged: (text) {
                     email = text;
                   },
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                      labelText: 'E-mail', border: OutlineInputBorder()),
+                      fillColor: Colors.white,
+                      labelText: 'E-mail',
+                      border: OutlineInputBorder()),
                 ),
               ),
               Padding(
@@ -43,21 +50,38 @@ class _LoginPageState extends State<LoginPage> {
                       labelText: 'Password', border: OutlineInputBorder()),
                 ),
               ),
-              SizedBox(
-                height: 15,
+              Container(
+                height: 30,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child:
-                        ElevatedButton(onPressed: () {}, child: Text("Login")),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        print('$email');
+                        if (email == 'wnk' && pswd == '123') {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context) => HomePage()),
+                          );
+                        } else {
+                          print("Failed...");
+                        }
+                      },
+                      child: Text("Login"),
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.grey[350], onPrimary: Colors.black54),
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child:
-                        ElevatedButton(onPressed: () {}, child: Text("Exit")),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text("Exit"),
+                      style: ElevatedButton.styleFrom(
+                          primary: Colors.grey[350], onPrimary: Colors.black54),
+                    ),
                   ),
                 ],
               ),
@@ -65,6 +89,22 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
+    );
+  }
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(children: [
+        SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Image.asset('assets/images/background.jpeg',
+                fit: BoxFit.cover)),
+        Container(
+          color: Colors.black.withOpacity(0.15),
+        ),
+        _body(),
+      ]),
     );
   }
 }
